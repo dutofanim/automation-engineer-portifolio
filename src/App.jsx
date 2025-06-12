@@ -121,7 +121,7 @@ function App() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="text-xl font-bold text-white">
-              John Smith
+              Carlos E. Tofanim
             </div>
             
             {/* Desktop Navigation */}
@@ -180,11 +180,11 @@ function App() {
         
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            John Smith
+            <div>Carlos Eduardo Tofanim</div>
             <br />
-            <span className="text-[#3b82f6]">Industrial Automation</span>
+            <span className="text-[#3b82f6]">Computer Engineer</span>
             <br />
-            <span className="text-[#f97316]">& Robotics Engineer</span>
+            <span className="text-[#f97316]">Industrial Automation & Robotics </span>
           </h1>
           
           <p className="text-xl sm:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
@@ -200,7 +200,7 @@ function App() {
             </Button>
             <Button 
               variant="outline" 
-              className="border-white/20 text-white hover:bg-white/10 px-8 py-3 text-lg"
+              className="bg-[#3b82f6] hover:bg-[#2563eb] text-white px-8 py-3 text-lg"
             >
               <Download className="mr-2 h-5 w-5" />
               Download Resume
@@ -423,7 +423,7 @@ function App() {
                     <CardDescription className="text-[#3b82f6]">ExMachina Engenharia e Robótica</CardDescription>
                   </div>
                   <Badge className="bg-[#10b981]/20 text-[#10b981] border-[#10b981]/30">
-                    2020 - Present
+                    2023 - Present
                   </Badge>
                 </div>
               </CardHeader>
@@ -440,6 +440,36 @@ function App() {
                 </ul>
               </CardContent>
             </Card>
+
+            <Card className="bg-[#2d3142] border-white/10">
+              <CardHeader>
+                <div className="flex justify-between items-start">
+                  <div>
+                    <CardTitle className="text-white">Business Intelligence Analyst</CardTitle>
+                    <CardDescription className="text-[#3b82f6]">Dell Technologies</CardDescription>
+                  </div>
+                  <Badge className="bg-[#0076CE]/20 text-[#0076CE] border-[#0076CE]/30">
+                    2022 - 2023
+                  </Badge>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-300 mb-4">
+                  As a Business Intelligence Analyst, I was responsible for front-end and back-end development of PAS modules
+                  developing RPAs in Python (PyAutoGUI), creating Power BI dashboards, implementing Figma for layout standardization,
+                  building ETL processes with SSIS, and designing database models through requirements gathering and table diagramming.
+                </p>
+                <ul className="list-disc list-inside text-gray-300 space-y-2">
+                  <li>Responsible for Front-End and Back-End development of modules such as RWB and Packaging within the PAS (Procurement Automation System)</li>
+                  <li>Led the migration of the HoldSystem from MDT to PAS (Procurement Automation System)</li>
+                  <li>Developed RPAs using Python (PyAutoGUI)</li>
+                  <li>Created interactive dashboards using Power BI</li>
+                  <li>Implemented Figma and standardized Power BI layout design across the team</li>
+                  <li>Developed ETL processes using SSIS</li>
+                  <li>Gathered requirements and designed database tables for data modeling</li>
+                </ul>
+              </CardContent>
+            </Card>
             
             <Card className="bg-[#2d3142] border-white/10">
               <CardHeader>
@@ -449,19 +479,30 @@ function App() {
                     <CardDescription className="text-[#3b82f6]">Sogefi Suspension Brasil LTDA</CardDescription>
                   </div>
                   <Badge className="bg-[#f97316]/20 text-[#f97316] border-[#f97316]/30">
-                    2018 - 2020
+                    2005 - 2021
                   </Badge>
                 </div>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-300 mb-4">
-                  Developed and maintained automation systems for automotive industry. 
-                  Specialized in regulatory compliance and validation procedures.
+                  Led automation and optimization initiatives in industrial equipment, including PLC software development,
+                  real-time machine networking, robotic integration via Profinet, CNC program enhancement (20% productivity gain),
+                  and on-line labeling systems, while also managing maintenance operations, mentoring interns, and implementing
+                  data logging solutions to meet client requirements and reduce downtime.
                 </p>
                 <ul className="list-disc list-inside text-gray-300 space-y-2">
-                  <li>Implemented FDA-compliant automation systems for pharmaceutical production</li>
-                  <li>Reduced system downtime by 25% through predictive maintenance programs</li>
-                  <li>Designed HMI interfaces for operator training and system monitoring</li>
+                  <li>Automated equipment to analyze performance and enable automatic shutdown to save resources (gas, electricity, and water)</li>
+                  <li>Developed and programmed a machine and equipment network for real-time dashboard monitoring</li>
+                  <li>Implemented a product label printing system directly on the production line</li>
+                  <li>Modified and developed PLC software, interpreted and detailed machine/component drawings, and carried out installations</li>
+                  <li>Managed maintenance support tickets for corrective actions and equipment supplies</li>
+                  <li>Actively participated in production line improvement projects using Kaizen methodologies</li>
+                  <li>Optimized CNC programming, resulting in a 20% increase in productivity</li>
+                  <li>Integrated bar production line with robots and industrial networks, achieving a 15% productivity gain</li>
+                  <li>Led retrofit and startup of a production line, integrating robots via Profinet to handle parts, increasing output by 15% and eliminating work-related injury risks</li>
+                  <li>Supervised interns in the maintenance department, providing guidance on strategies to effectively meet demands</li>
+                  <li>Reduced production downtime by quickly identifying root causes of failures and advising operators on optimal equipment use</li>
+                  <li>Met customer requirements by creating data loggers to monitor critical process data</li>
                 </ul>
               </CardContent>
             </Card>
@@ -512,12 +553,16 @@ function App() {
               <div className="mt-8">
                 <h4 className="text-lg font-semibold mb-4">Professional Links</h4>
                 <div className="flex space-x-4">
-                  <Button variant="outline" size="icon" className="border-white/20 text-white hover:bg-white/10">
-                    <Linkedin className="h-5 w-5" />
-                  </Button>
-                  <Button variant="outline" size="icon" className="border-white/20 text-white hover:bg-white/10">
-                    <Github className="h-5 w-5" />
-                  </Button>
+                  <a href="https://www.linkedin.com/in/etofanim/" target="_blank"> 
+                    <Button variant="outline" size="icon" className="border-white/20 text-white hover:bg-white/10 bg-black">
+                      <Linkedin className="h-5 w-5" />
+                    </Button>
+                  </a>
+                  <a href="https://github.com/dutofanim" target="_blank"> 
+                    <Button variant="outline" size="icon" className="border-white/20 text-white hover:bg-white/10  bg-black">
+                      <Github className="h-5 w-5" />
+                    </Button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -530,33 +575,29 @@ function App() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium mb-2">Name</label>
-                  <input 
-                    type="text" 
-                    className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3b82f6]"
-                    placeholder="Your name"
-                  />
+                <div class="container">
+                  <form target="_blank" action="https://formsubmit.co/af80ff98ecc75780fcaa707811dec1f1" method="POST">
+                    <div class="form-group">
+                      <div class="form-row">
+                        <div class="col">
+                          <label className="text-white block text-sm font-medium mb-2">Name</label>
+                          <input type="text" name="name" class="form-control" className="w-full px-3 py-2 mb-2 bg-white/10 border border-white/20 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3b82f6]" placeholder="Full Name" required/>
+                        </div>
+                        <div class="col">
+                          <label className="text-white block text-sm font-medium mb-2">Email</label>
+                          <input type="email" name="email" class="form-control" className="w-full px-3 py-2 mb-2 bg-white/10 border border-white/20 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3b82f6]" placeholder="Email Address" required/>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label className="text-white block text-sm font-medium mb-2">Message</label>
+                      <textarea placeholder="Your Message" class="form-control" className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3b82f6]" name="message" rows="4" required></textarea>
+                    </div>
+                    <Button type="submit" className=" my-4 rounded-md w-full bg-[#3b82f6] hover:bg-[#2563eb] text-white">
+                      Send Message
+                    </Button>
+                  </form>
                 </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">Email</label>
-                  <input 
-                    type="email" 
-                    className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3b82f6]"
-                    placeholder="carlos.tofanim@exmachina.eng.br"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">Message</label>
-                  <textarea 
-                    rows={4}
-                    className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3b82f6]"
-                    placeholder="Tell me about your project..."
-                  />
-                </div>
-                <Button className="w-full bg-[#3b82f6] hover:bg-[#2563eb] text-white">
-                  Send Message
-                </Button>
               </CardContent>
             </Card>
           </div>

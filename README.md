@@ -22,7 +22,7 @@ A modern, responsive portfolio website for showcasing industrial automation and 
 
 ## Project Structure
 
-```
+```text
 ├── public/                 # Static assets
 ├── src/
 │   ├── assets/            # Images and design assets
