@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import emailjs from '@emailjs/browser'
 import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
@@ -24,6 +25,13 @@ import './App.css'
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState('')
 
   // Handle scroll to update active section
   useEffect(() => {
@@ -48,6 +56,58 @@ function App() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  // Handle resume download
+  const handleResumeDownload = () => {
+    const link = document.createElement('a')
+    link.href = '/assets/carlos-tofanim-resume.pdf'
+    link.download = 'Carlos-Tofanim-Resume.pdf'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
+  // Handle form input changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
+  // Handle form submission with EmailJS
+  const handleFormSubmit = async (e) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setSubmitStatus('')
+
+    try {
+      // EmailJS configuration - replace with your actual service details
+      const serviceId = 'YOUR_SERVICE_ID'
+      const templateId = 'YOUR_TEMPLATE_ID'
+      const publicKey = 'YOUR_PUBLIC_KEY'
+
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_name: 'Carlos Eduardo Tofanim'
+      }
+
+      await emailjs.send(serviceId, templateId, templateParams, publicKey)
+      
+      setSubmitStatus('success')
+      setFormData({ name: '', email: '', message: '' })
+    } catch (error) {
+      console.error('EmailJS error:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+      // Clear status after 5 seconds
+      setTimeout(() => setSubmitStatus(''), 5000)
+    }
+  }
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId)
@@ -199,6 +259,7 @@ function App() {
               Get in Touch
             </Button>
             <Button 
+              onClick={handleResumeDownload}
               variant="outline" 
               className="bg-[#3b82f6] hover:bg-[#2563eb] text-white px-8 py-3 text-lg"
             >
@@ -575,29 +636,64 @@ function App() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div class="container">
-                  <form target="_blank" action="https://formsubmit.co/af80ff98ecc75780fcaa707811dec1f1" method="POST">
-                    <div class="form-group">
-                      <div class="form-row">
-                        <div class="col">
-                          <label className="text-white block text-sm font-medium mb-2">Name</label>
-                          <input type="text" name="name" class="form-control" className="w-full px-3 py-2 mb-2 bg-white/10 border border-white/20 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3b82f6]" placeholder="Full Name" required/>
-                        </div>
-                        <div class="col">
-                          <label className="text-white block text-sm font-medium mb-2">Email</label>
-                          <input type="email" name="email" class="form-control" className="w-full px-3 py-2 mb-2 bg-white/10 border border-white/20 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3b82f6]" placeholder="Email Address" required/>
-                        </div>
-                      </div>
+                <form onSubmit={handleFormSubmit} className="space-y-4">
+                  <div>
+                    <label className="text-white block text-sm font-medium mb-2">Name</label>
+                    <input 
+                      type="text" 
+                      name="name" 
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3b82f6]" 
+                      placeholder="Your name" 
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="text-white block text-sm font-medium mb-2">Email</label>
+                    <input 
+                      type="email" 
+                      name="email" 
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3b82f6]" 
+                      placeholder="your.email@example.com" 
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="text-white block text-sm font-medium mb-2">Message</label>
+                    <textarea 
+                      name="message" 
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      rows={4}
+                      className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3b82f6]" 
+                      placeholder="Tell me about your project..."
+                      required
+                    />
+                  </div>
+                  
+                  {/* Status Messages */}
+                  {submitStatus === 'success' && (
+                    <div className="p-3 bg-green-500/20 border border-green-500/30 rounded-md text-green-400 text-sm">
+                      Message sent successfully! I'll get back to you soon.
                     </div>
-                    <div class="form-group">
-                      <label className="text-white block text-sm font-medium mb-2">Message</label>
-                      <textarea placeholder="Your Message" class="form-control" className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3b82f6]" name="message" rows="4" required></textarea>
+                  )}
+                  {submitStatus === 'error' && (
+                    <div className="p-3 bg-red-500/20 border border-red-500/30 rounded-md text-red-400 text-sm">
+                      Failed to send message. Please try again or contact me directly.
                     </div>
-                    <Button type="submit" className=" my-4 rounded-md w-full bg-[#3b82f6] hover:bg-[#2563eb] text-white">
-                      Send Message
-                    </Button>
-                  </form>
-                </div>
+                  )}
+                  
+                  <Button 
+                    type="submit" 
+                    disabled={isSubmitting}
+                    className="w-full bg-[#3b82f6] hover:bg-[#2563eb] text-white disabled:opacity-50"
+                  >
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                  </Button>
+                </form>
               </CardContent>
             </Card>
           </div>
