@@ -84,9 +84,9 @@ function App() {
 
     try {
       // EmailJS configuration - replace with your actual service details
-      const serviceId = 'YOUR_SERVICE_ID'
-      const templateId = 'YOUR_TEMPLATE_ID'
-      const publicKey = 'YOUR_PUBLIC_KEY'
+      const serviceId = 'service_8xy1trd'
+      const templateId = 'template_b2m6urs'
+      const publicKey = 'FdydltGUR4W1VVfWT'
 
       const templateParams = {
         from_name: formData.name,
