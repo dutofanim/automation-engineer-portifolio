@@ -83,10 +83,10 @@ function App() {
     setSubmitStatus('')
 
     try {
-      // EmailJS configuration - replace with your actual service details
-      const serviceId = 'service_8xy1trd'
-      const templateId = 'template_b2m6urs'
-      const publicKey = 'FdydltGUR4W1VVfWT'
+      // EmailJS configuration using environment variables
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
       const templateParams = {
         from_name: formData.name,
@@ -124,7 +124,9 @@ function App() {
       description: "Integrated robotic arms into an automated assembly line, improving production efficiency by 35% and reducing defect rates.",
       image: "/api/placeholder/600/400",
       technologies: ["PLC Programming", "Robotics", "SCADA", "HMI"],
-      category: "Manufacturing Automation"
+      category: "Manufacturing Automation",
+      url: "https://github.com/dutofanim/automated-assembly-line",
+      demoUrl: "https://assembly-line-demo.netlify.app"
     },
     {
       id: 2,
@@ -132,7 +134,9 @@ function App() {
       description: "Developed IoT-based monitoring system for real-time production tracking and predictive maintenance.",
       image: "/api/placeholder/600/400",
       technologies: ["IoT", "Python", "InfluxDB", "Grafana"],
-      category: "Process Control"
+      category: "Process Control",
+      url: "https://github.com/dutofanim/smart-factory-iot",
+      demoUrl: "https://smart-factory-dashboard.netlify.app"
     },
     {
       id: 3,
@@ -140,7 +144,9 @@ function App() {
       description: "Designed and implemented safety systems for collaborative robots in human-robot shared workspaces.",
       image: "/api/placeholder/600/400",
       technologies: ["Safety PLCs", "Vision Systems", "Risk Assessment", "ISO 10218"],
-      category: "Robotics Integration"
+      category: "Robotics Integration",
+      url: "https://github.com/dutofanim/cobot-safety-system",
+      demoUrl: "https://cobot-safety-demo.netlify.app"
     }
   ]
 
@@ -413,13 +419,23 @@ function App() {
                       </Badge>
                     ))}
                   </div>
-                  <Button 
-                    variant="outline" 
-                    className="w-full border-[#3b82f6]/50 text-[#3b82f6] hover:bg-[#3b82f6]/10"
-                  >
-                    <ExternalLink className="mr-2 h-4 w-4" />
-                    View Details
-                  </Button>
+                  <div className="flex gap-2">
+                    <Button 
+                      onClick={() => window.open(project.url, '_blank')}
+                      variant="outline" 
+                      className="flex-1 border-[#3b82f6]/50 text-[#3b82f6] hover:bg-[#3b82f6]/10"
+                    >
+                      <ExternalLink className="mr-2 h-4 w-4" />
+                      GitHub
+                    </Button>
+                    <Button 
+                      onClick={() => window.open(project.demoUrl, '_blank')}
+                      className="flex-1 bg-[#3b82f6] hover:bg-[#2563eb] text-white"
+                    >
+                      <ExternalLink className="mr-2 h-4 w-4" />
+                      Live Demo
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             ))}
